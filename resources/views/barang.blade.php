@@ -25,6 +25,7 @@
                     <th scope="col">Jumlah</th>
                     <th scope="col">Keterangan</th>
                     <th scope="col">Kode Investaris</th>
+                    <th scope="col" colspan="2">Edit Atau Hapus</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,10 +39,16 @@
                         <td>{{ $b->jumlah }}</td>
                         <td>{{ $b->keterangan }}</td>
                         <td>{{ $b->kode_investaris }}</td>
+                        <td><a href="{{ route('br.edit',$b->id) }}"><button class="btn btn-secondary">Edit</button></a></td>
+                        <td><form action="{{ route('br.delete',$b->id) }}" method="post"><button class="btn btn-danger">Delete</button>
+                            @csrf
+                            @method('delete')
+                        </form></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <a href="{{ route('br.create') }}" class="float-right"><button class="btn btn-success">Tambah</button></a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

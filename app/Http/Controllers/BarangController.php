@@ -23,7 +23,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        return view('tambah');
     }
 
     /**
@@ -31,7 +31,22 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $data = $request->validate([
+            'kode_barang' => 'required',
+            'nama_barang' => 'required',
+            'tanggal_pembelian' => 'required',
+            'type_barang' => 'required',
+            'harga_barang' => 'required',
+            'jumlah' => 'required',
+            'keterangan' => 'required',
+            'kode_investaris' => 'required'
+        ]);
+
+        // dd($data);
+
+        Barang::create($request->all());
+        return redirect('/')->with('success','Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -47,7 +62,8 @@ class BarangController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $edit = Barang::findOrFail($id);
+        return view('edit', compact('edit'));
     }
 
     /**
@@ -55,7 +71,20 @@ class BarangController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+
+        $barang->update([
+            'kode_barang' => $request->kode_barang,
+            'nama_barang' => $request->nama_barang,
+            'tanggal_pembelian' => $request->tanggal_pembelian,
+            'type_barang' => $request->type_barang,
+            'harga_barang' => $request->harga_barang,
+            'jumlah' => $request->jumlah,
+            'keterangan' => $request->keterangan,
+            'kode_investaris' => $request->kode_investaris
+        ]);
+
+        return redirect()->route('br')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**
@@ -63,6 +92,10 @@ class BarangController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+
+        $barang->delete();
+
+        return redirect()->route('br')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

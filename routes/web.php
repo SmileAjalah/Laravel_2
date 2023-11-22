@@ -14,4 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [BarangController::class, 'index']);
+Route::get('/', [BarangController::class, 'index'])->name('br');
+Route::get('/create', [BarangController::class, 'create'])->name('br.create');
+Route::post('/store', [BarangController::class, 'store'])->name('br.store');
+Route::delete('/delete/{id}', [BarangController::class, 'destroy'])->name('br.delete');
+Route::get('/edit/{id}', [BarangController::class, 'edit'])->name('br.edit');
+Route::put('/update/{id}', [BarangController::class, 'update'])->name('br.update');
+
