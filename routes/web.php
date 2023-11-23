@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\RuangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [BarangController::class, 'index'])->name('br');
-Route::get('/create', [BarangController::class, 'create'])->name('br.create');
-Route::post('/store', [BarangController::class, 'store'])->name('br.store');
-Route::delete('/delete/{id}', [BarangController::class, 'destroy'])->name('br.delete');
-Route::get('/edit/{id}', [BarangController::class, 'edit'])->name('br.edit');
-Route::put('/update/{id}', [BarangController::class, 'update'])->name('br.update');
+Route::get('/barang', [BarangController::class, 'index'])->name('br');
+Route::get('/barang/create', [BarangController::class, 'create'])->name('br.create');
+Route::post('/barang/store', [BarangController::class, 'store'])->name('br.store');
+Route::delete('/barang/delete/{id}', [BarangController::class, 'destroy'])->name('br.delete');
+Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('br.edit');
+Route::put('/barang/update/{id}', [BarangController::class, 'update'])->name('br.update');
+
+Route::get('/ruang', [RuangController::class, 'index'])->name('rg');
+Route::get('/ruang/create', [RuangController::class, 'create'])->name('rg.create');
+Route::post('/ruang/store', [RuangController::class, 'store'])->name('rg.store');
+Route::delete('/ruang/delete/{id}', [RuangController::class, 'destroy'])->name('rg.delete');
+Route::get('/ruang/edit/{id}', [RuangController::class, 'edit'])->name('rg.edit');
+Route::put('/ruang/update/{id}', [RuangController::class, 'update'])->name('rg.update');
 

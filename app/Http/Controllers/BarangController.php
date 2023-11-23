@@ -15,7 +15,7 @@ class BarangController extends Controller
         $dataBarang =[
             'barang'=> Barang::all(), 
         ];
-        return view('barang',$dataBarang);
+        return view('Barang/barang',$dataBarang);
     }
 
     /**
@@ -23,7 +23,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('tambah');
+        return view('Barang/tambah');
     }
 
     /**
@@ -46,7 +46,7 @@ class BarangController extends Controller
         // dd($data);
 
         Barang::create($request->all());
-        return redirect('/')->with('success','Data Berhasil Ditambahkan!');
+        return redirect('/barang')->with('success','Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -63,7 +63,7 @@ class BarangController extends Controller
     public function edit(string $id)
     {
         $edit = Barang::findOrFail($id);
-        return view('edit', compact('edit'));
+        return view('Barang/edit', compact('edit'));
     }
 
     /**
