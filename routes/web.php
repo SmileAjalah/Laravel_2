@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\RuangController;
+use App\Http\Controllers\PinjamanController;
+use App\Http\Controllers\BarangRuangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +31,16 @@ Route::delete('/ruang/delete/{id}', [RuangController::class, 'destroy'])->name('
 Route::get('/ruang/edit/{id}', [RuangController::class, 'edit'])->name('rg.edit');
 Route::put('/ruang/update/{id}', [RuangController::class, 'update'])->name('rg.update');
 
+Route::get('/pinjaman', [PinjamanController::class, 'index'])->name('pn');
+Route::get('/pinjaman/create', [PinjamanController::class, 'create'])->name('pn.create');
+Route::post('/pinjaman/store', [PinjamanController::class, 'store'])->name('pn.store');
+Route::delete('/pinjaman/delete/{id}', [PinjamanController::class, 'destroy'])->name('pn.delete');
+Route::get('/pinjaman/edit/{id}', [PinjamanController::class, 'edit'])->name('pn.edit');
+Route::put('/pinjaman/update/{id}', [PinjamanController::class, 'update'])->name('pn.update');
+
+Route::get('/barangruang', [BarangRuangController::class, 'index'])->name('bg');
+Route::get('/barangruang/create', [BarangRuangController::class, 'create'])->name('bg.create');
+Route::post('/barangruang/store', [BarangRuangController::class, 'store'])->name('bg.store');
+Route::delete('/barangruang/delete/{id}', [BarangRuangController::class, 'destroy'])->name('bg.delete');
+Route::get('/barangruang/edit/{id}', [BarangRuangController::class, 'edit'])->name('bg.edit');
+Route::put('/barangruang/update/{id}', [BarangRuangController::class, 'update'])->name('bg.update');
